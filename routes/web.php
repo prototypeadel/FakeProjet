@@ -13,4 +13,14 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+Route::get('/services', function () {
+    return view('services');
+})->name('service');
+Route::get('/blog', function () {
+    return view('blog');
+})->name('blog');
+Route::get('/conact', function () {
+    return view('contact');
+})->name('contact');
+

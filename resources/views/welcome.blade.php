@@ -1,18 +1,20 @@
 
 
+@extends("layout.front")
+@section('content')
 
 	<!-- Intro Section -->
 	<div class="hero-section">
 		<div class="hero-content">
 			<div class="hero-center">
-				<img src="img/big-logo.png" alt="">
+				<img src="{{asset('theme/img/big-logo.png')}}" alt="">
 				<p>Get your freebie template now!</p>
 			</div>
 		</div>
 		<!-- slider -->
 		<div id="hero-slider" class="owl-carousel">
-			<div class="item  hero-item" data-bg="img/01.jpg"></div>
-			<div class="item  hero-item" data-bg="img/02.jpg"></div>
+			<div class="item  hero-item" data-bg="{{asset('theme/img/01.jpg')}}"></div>
+			<div class="item  hero-item" data-bg="{{asset('theme/img/02.jpg')}}"></div>
 		</div>
 	</div>
 	<!-- Intro Section -->
@@ -82,7 +84,7 @@
 				<div class="intro-video">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
-							<img src="img/video.jpg" alt="">
+							<img src="{{asset('theme/img/video.jpg')}}" alt="">
 							<a href="https://www.youtube.com/watch?v=JgHfx2v9zOU" class="video-popup">
 								<i class="fa fa-play"></i>
 							</a>
@@ -111,7 +113,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
 							<div class="client-info">
 								<div class="avatar">
-									<img src="img/avatar/01.jpg" alt="">
+									<img src="{{asset('theme/img/avatar/01.jpg')}}" alt="">
 								</div>
 								<div class="client-name">
 									<h2>Michael Smith</h2>
@@ -125,7 +127,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
 							<div class="client-info">
 								<div class="avatar">
-									<img src="img/avatar/02.jpg" alt="">
+									<img src="{{asset('theme/img/avatar/02.jpg')}}" alt="">
 								</div>
 								<div class="client-name">
 									<h2>Michael Smith</h2>
@@ -139,7 +141,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
 							<div class="client-info">
 								<div class="avatar">
-									<img src="img/avatar/01.jpg" alt="">
+									<img src="{{asset('theme/img/avatar/01.jpg')}}" alt="">
 								</div>
 								<div class="client-name">
 									<h2>Michael Smith</h2>
@@ -153,7 +155,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
 							<div class="client-info">
 								<div class="avatar">
-									<img src="img/avatar/02.jpg" alt="">
+									<img src="{{asset('theme/img/avatar/02.jpg')}}" alt="">
 								</div>
 								<div class="client-name">
 									<h2>Michael Smith</h2>
@@ -167,7 +169,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
 							<div class="client-info">
 								<div class="avatar">
-									<img src="img/avatar/01.jpg" alt="">
+									<img src="{{asset('theme/img/avatar/01.jpg')}}" alt="">
 								</div>
 								<div class="client-name">
 									<h2>Michael Smith</h2>
@@ -181,7 +183,7 @@
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla. Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
 							<div class="client-info">
 								<div class="avatar">
-									<img src="img/avatar/02.jpg" alt="">
+									<img src="{{asset('theme/img/avatar/02.jpg')}}" alt="">
 								</div>
 								<div class="client-name">
 									<h2>Michael Smith</h2>
@@ -332,7 +334,7 @@
 				<!-- single member -->
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="img/team/1.jpg" alt="">
+						<img src="{{asset('theme/img/team/1.jpg')}}" alt="">
 						<h2>Christinne Williams</h2>
 						<h3>Project Manager</h3>
 					</div>
@@ -340,7 +342,7 @@
 				<!-- single member -->
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="img/team/2.jpg" alt="">
+						<img src="{{asset('theme/img/team/2.jpg')}}" alt="">
 						<h2>Christinne Williams</h2>
 						<h3>Junior developer</h3>
 					</div>
@@ -348,7 +350,7 @@
 				<!-- single member -->
 				<div class="col-sm-4">
 					<div class="member">
-						<img src="img/team/3.jpg" alt="">
+						<img src="{{asset('theme/img/team/3.jpg')}}" alt="">
 						<h2>Christinne Williams</h2>
 						<h3>Digital designer</h3>
 					</div>
@@ -377,6 +379,9 @@
 	</div>
 	<!-- Promotion section end-->
 
+    @endsection
+
+    @section('contact')
 
 	<!-- Contact section -->
 	<div class="contact-section spad fix">
@@ -417,21 +422,9 @@
 	<!-- Contact section end-->
 
 
-	<!-- Footer section -->
-	<footer class="footer-section">
-		<h2>2017 All rights reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></h2>
-	</footer>
-	<!-- Footer section end -->
 
 
 
+@endsection
 
-	<!--====== Javascripts & Jquery ======-->
-	<script src="js/jquery-2.1.4.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/magnific-popup.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/circle-progress.min.js"></script>
-	<script src="js/main.js"></script>
-</body>
-</html>
+
