@@ -25,6 +25,7 @@ Route::get('/conact', function () {
 })->name('contact');
 
 Route::resource('/admin/caroussels','CarousselController');
+Route::resource('/admin/services','ServiceController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

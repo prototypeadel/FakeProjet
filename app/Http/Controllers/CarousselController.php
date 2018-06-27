@@ -18,7 +18,7 @@ class CarousselController extends Controller
     public function index()
     {
         $caroussels = Caroussel::all();
-        return view ('admin.index',compact('caroussels'));
+        return view ('admin.caroussel.index',compact('caroussels'));
     }
 
     /**
@@ -29,7 +29,7 @@ class CarousselController extends Controller
     public function create()
     {
         $caroussels = Caroussel::all();
-        return view ('admin.create',compact('caroussels'));  
+        return view ('admin.caroussel.create',compact('caroussels'));  
         
     }
 
@@ -57,7 +57,7 @@ class CarousselController extends Controller
      */
     public function show(Caroussel $caroussel)
     {
-        return view('admin.show' ,compact('caroussel'));
+        return view('admin.caroussel.show' ,compact('caroussel'));
     }
 
     /**
@@ -68,7 +68,7 @@ class CarousselController extends Controller
      */
     public function edit(Caroussel $caroussel)
     {
-        //
+        return view ('admin.caroussel.edit',compact('caroussel'));
     }
 
     /**
@@ -80,7 +80,16 @@ class CarousselController extends Controller
      */
     public function update(Request $request, Caroussel $caroussel)
     {
-        //
+
+          $caroussel->name = $request->name;
+        if ($request->photo != null){
+            Storage::disk('DiskImage')->delete($caroussel->photo);
+            $caroussel->photo = $request->photo->store('','DiskImage');
+        }
+        if($caroussel->save()){
+            return redirect()->route('caroussels.show',['id'=> $caroussel->id]);
+        }
+
     }
 
     /**
@@ -91,6 +100,10 @@ class CarousselController extends Controller
      */
     public function destroy(Caroussel $caroussel)
     {
-        //
+        Storage::disk("DiskImage")->delete($caroussel->photo);
+        if($caroussel->delete()){
+
+            return redirect()->route ('caroussels.index');
+        }
     }
 }
