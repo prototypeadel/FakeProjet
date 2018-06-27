@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServicesTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'services';
+    public $set_schema_table = 'roles';
 
     /**
      * Run the migrations.
-     * @table services
+     * @table roles
      *
      * @return void
      */
@@ -23,12 +23,11 @@ class CreateServicesTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('idService');
-            $table->string('titre', 45);
-            $table->string('contenu', 45);
-            $table->string('image', 45);
-            $table->timestamp('create_time')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('update_time')->nullable();
+            $table->increments('idroles');
+            $table->string('nom', 45);
+            $table->string('slug', 45);
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

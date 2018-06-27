@@ -1,0 +1,96 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Caroussel;
+use Illuminate\Http\Request;
+use Image;
+use Storage;
+
+
+class CarousselController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $caroussels = Caroussel::all();
+        return view ('admin.index',compact('caroussels'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $caroussels = Caroussel::all();
+        return view ('admin.create',compact('caroussels'));  
+        
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $caroussel = new Caroussel;
+        $caroussel->name = $request->name;
+        $caroussel->photo = $request->photo->store('','DiskImage');
+        $caroussel->save();
+
+        return redirect()->route('caroussels.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Caroussel  $caroussel
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Caroussel $caroussel)
+    {
+        return view('admin.show' ,compact('caroussel'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Caroussel  $caroussel
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Caroussel $caroussel)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Caroussel  $caroussel
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Caroussel $caroussel)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Caroussel  $caroussel
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Caroussel $caroussel)
+    {
+        //
+    }
+}

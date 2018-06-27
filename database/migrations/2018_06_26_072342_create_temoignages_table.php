@@ -28,8 +28,8 @@ class CreateTemoignagesTable extends Migration
             $table->string('prenom', 45);
             $table->string('contenu', 45);
             $table->string('image', 45);
-            $table->timestamp('create_time')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('update_time')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

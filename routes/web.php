@@ -24,3 +24,7 @@ Route::get('/conact', function () {
     return view('contact');
 })->name('contact');
 
+Route::resource('/admin/caroussels','CarousselController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
