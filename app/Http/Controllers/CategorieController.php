@@ -14,7 +14,8 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Categorie::all();
+        return view ('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return view ("admin.categories.create");
     }
 
     /**
@@ -35,7 +36,11 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categorie = new Categorie;
+        $categorie->name = $request->name;
+        $categorie->save();
+
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -44,9 +49,12 @@ class CategorieController extends Controller
      * @param  \App\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function show(Categorie $categorie)
+    public function show($id)
     {
-        //
+        $categorie = Categorie::find($id);
+        return view ('admin.categories.show',compact('categorie'));
+        
+        
     }
 
     /**
@@ -55,9 +63,12 @@ class CategorieController extends Controller
      * @param  \App\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorie $categorie)
+    public function edit( $id)
     {
-        //
+        $categorie = Categorie::find($id);
+        // object = categorie
+        return view ('admin.categories.edit',compact('categorie'));
+
     }
 
     /**
@@ -67,9 +78,14 @@ class CategorieController extends Controller
      * @param  \App\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorie $categorie)
+    public function update(Request $request, $id)
     {
-        //
+        // recuperer via l'id
+        $categorie = Categorie::find($id);
+        $categorie->name = $request->name;
+        if($categorie->save()){
+            return redirect()->route('categories.show',['id'=> $categorie->id]);
+        }
     }
 
     /**
@@ -78,8 +94,10 @@ class CategorieController extends Controller
      * @param  \App\Categorie  $categorie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorie $categorie)
+    public function destroy($id)
     {
-        //
+        $categorie = Categorie::find($id);
+        $categorie->delete();
+        return redirect()->route ('categories.index');
     }
 }

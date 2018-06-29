@@ -60,6 +60,24 @@ return [
             'url' => env('APP_URL').'/storage/imageDisk',
             'visibility' => 'public',
         ],
+        'DiskImageService' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/imageDiskService'),
+            'url' => env('APP_URL').'/storage/imageDiskService',
+            'visibility' => 'public',
+        ],
+        'DiskImageProjets' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/imageDiskProjets'),
+            'url' => env('APP_URL').'/storage/imageDiskProjets',
+            'visibility' => 'public',
+        ],
+        'DiskImageTemoignages' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/imageDiskTemoignages'),
+            'url' => env('APP_URL').'/storage/imageDiskTemoignages',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

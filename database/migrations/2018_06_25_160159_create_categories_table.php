@@ -23,10 +23,10 @@ class CreateCategoriesTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('idcategories');
-            $table->string('nom', 45);
-            $table->timestamp('create_time')->nullable()->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('update_time')->nullable();
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

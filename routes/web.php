@@ -26,6 +26,10 @@ Route::get('/conact', function () {
 
 Route::resource('/admin/caroussels','CarousselController');
 Route::resource('/admin/services','ServiceController');
+Route::resource('/admin/categories','CategorieController');
+Route::resource('/admin/projets','ProjetController');
+Route::resource('/admin/temoignages','TemoignageController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

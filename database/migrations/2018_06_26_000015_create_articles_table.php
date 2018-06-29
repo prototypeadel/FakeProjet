@@ -24,13 +24,13 @@ class CreateArticlesTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('idArticle');
-            $table->string('titre', 45);
-            $table->string('contenu', 45);
-            $table->string('nom', 45);
-            $table->string('prenom', 45);
-            $table->string('tag', 45);
-            $table->string('date', 45);
-            $table->string('comments', 45);
+            $table->string('titre');
+            $table->string('contenu');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('tag');
+            $table->string('date');
+            $table->string('comments');
            // $table->unsignedInteger('categories_idcategories');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

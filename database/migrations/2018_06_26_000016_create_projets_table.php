@@ -23,10 +23,10 @@ class CreateProjetsTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('idProjet');
-            $table->string('titre', 45);
-            $table->string('contenu', 45);
-            $table->string('image', 55);
+            $table->increments('id');
+            $table->string('titre');
+            $table->string('contenu');
+            $table->string('image');
             //$table->unsignedInteger('clients_idclients');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();

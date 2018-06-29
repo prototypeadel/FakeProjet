@@ -23,8 +23,8 @@ class CreateTagsTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('idtags');
-            $table->string('nom', 45);
+            $table->increments('id');
+            $table->string('nom');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });

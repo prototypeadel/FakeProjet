@@ -57,6 +57,7 @@ class CarousselController extends Controller
      */
     public function show(Caroussel $caroussel)
     {
+
         return view('admin.caroussel.show' ,compact('caroussel'));
     }
 
@@ -68,7 +69,7 @@ class CarousselController extends Controller
      */
     public function edit(Caroussel $caroussel)
     {
-        return view ('admin.caroussel.edit',compact('caroussel'));
+        
     }
 
     /**

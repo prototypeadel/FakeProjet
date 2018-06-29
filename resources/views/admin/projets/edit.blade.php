@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'service edit')
+@section('title', 'projet edit')
 
 @section('content_header')
-    <h1> Mon service</h1>
+    <h1> Mon projet</h1>
 @stop
 
 @section('content')
@@ -15,7 +15,7 @@
         <div class="col-md-8">
             <div class="box">
                 <div class="box-body">
-                    <form action="{{route('services.update',['id'=>$service->id])}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('projets.update',['id'=>$projet->id])}}" method="post" enctype="multipart/form-data">
                         @method('PUT')
                     @csrf
                     {{-- @method('PUT') --}}
@@ -26,7 +26,7 @@
                         <div class="text-danger">Le champs titre est obligatoire</div>
                         @endif
 
-                    <input type="text" name="name" id="titre" class="form-control {{ $errors->has('titre')?'border-danger':''}}" value="{{old('name',$service->titre) }}" >
+                    <input type="text" name="titre" id="titre" class="form-control {{ $errors->has('titre')?'border-danger':''}}" value="{{old('name',$projet->titre) }}" >
                     
                     </div>
                     <div class="form-group">
@@ -36,7 +36,7 @@
                             <div class="text-danger">Le champs titre est obligatoire</div>
                             @endif
     
-                            <input type="text" name="contenu" id="contenu" class="form-control {{ $errors->has('titre')?'border-danger':''}}" value="{{old('name',$service->contenu) }}" >
+                            <input type="text" name="contenu" id="contenu" class="form-control {{ $errors->has('titre')?'border-danger':''}}" value="{{old('name',$projet->contenu) }}" >
                             
                             </div>
                     

@@ -23,12 +23,12 @@ class CreateServicesTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('idService');
-            $table->string('titre', 45);
-            $table->string('contenu', 200);
-            $table->string('image', 45);
-            $table->timestamp('create_time')->nullable();
-            $table->timestamp('update_time')->nullable();
+            $table->increments('id');
+            $table->string('titre', 255);
+            $table->string('contenu');
+            $table->string('image');
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

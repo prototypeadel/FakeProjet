@@ -17,6 +17,7 @@
                 <th scope="col">image</th>
                 <th scope="col">nom</th>
                 <th scope="col">id</th>
+                <th>action</th>
               </tr>
             </thead>
             <tbody>
@@ -24,7 +25,7 @@
                 @foreach($caroussels as $element)
               <tr>
                 <td scope="row">{{$loop->iteration}} </td>
-                 <td>   <img src="{{Storage::disk('DiskImage')->url($element->photo)}}"  style="width:100px;height:50px;" alt="tt"></td>
+                <td>   <img src="{{Storage::disk('DiskImage')->url($element->photo)}}"  style="width:100px;height:50px;" alt="tt"></td>
                 <td> {{$element->name}}</td>
                 <td> {{$element->id}}</td>
               <td>  

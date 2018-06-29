@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Service;
 use Illuminate\Http\Request;
+use Image;
+use Storage;
+
 
 class ServiceController extends Controller
 {
@@ -25,7 +28,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        $services = Service::all();
+        return view ('admin.services.create',compact('services'));  
     }
 
     /**
@@ -36,7 +40,13 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $service = new Service;
+        $service->titre= $request->titre;
+        $service->contenu= $request->contenu;
+        $service->image = $request->image->store('','DiskImageService');
+        $service->save();
+
+        return redirect()->route('services.index');
     }
 
     /**
@@ -47,7 +57,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return view('admin.services.show' ,compact('service'));
     }
 
     /**
@@ -58,7 +68,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view ('admin.services.edit',compact('service'));
     }
 
     /**
@@ -70,7 +80,14 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $service->name = $request->name;
+        if ($request->image != null){
+            Storage::disk('DiskImageService')->delete($service->image);
+            $service->image= $request->image->store('','DiskImageService');
+        }
+        if($service->save()){
+            return redirect()->route('services.show',['id'=> $service->id]);
+        }
     }
 
     /**
@@ -81,6 +98,11 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        Storage::disk("DiskImageService")->delete($service->image);
+        if($service->delete()){
+
+            return redirect()->route ('services.index');
+        }
     }
-}
+    }
+
