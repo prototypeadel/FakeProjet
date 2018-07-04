@@ -23,11 +23,14 @@ class CreateRolesTable extends Migration
         if (Schema::hasTable($this->set_schema_table)) return;
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('idroles');
-            $table->string('nom', 45);
+            $table->increments('id');
+            $table->string('name', 45);
             $table->string('slug', 45);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+
+
+            
         });
     }
 

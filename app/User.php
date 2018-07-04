@@ -17,7 +17,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
-
+    public function role(){
+        return $this->belongsTo('App\Role','role_id','id');
+    }
+ 
+    public function isAdmin(){
+       return Auth::user()->role->slug == "admin";
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

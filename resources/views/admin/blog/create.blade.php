@@ -3,22 +3,17 @@
 @section('title', 'Caroussel')
 
 @section('content_header')
-<h1> Creation Temoignage</h1>
+<h1> creation projet</h1>
 @stop
 
 @section('content')
    
 
-    <form action="{{route('temoignages.store')}}" method="post"  enctype="multipart/form-data">
+    <form action="{{route('projets.store')}}" method="post"  enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="tof" >Nom </label>
-            <input  class="form-control" id="tof" name="nom"  placeholder="entrée nom ">
-         
-        </div>
-        <div class="form-group">
-            <label for="tof" >Prénom </label>
-            <input  class="form-control" id="tof" name="prenom"  placeholder="entrée prenom ">
+            <label for="tof" >titre </label>
+            <input  class="form-control" id="tof" name="titre"  placeholder="entrée titre projet">
          
         </div>
         <div class="form-group">

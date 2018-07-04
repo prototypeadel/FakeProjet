@@ -78,6 +78,12 @@ return [
             'url' => env('APP_URL').'/storage/imageDiskTemoignages',
             'visibility' => 'public',
         ],
+        'DiskImageUsers' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/imageDiskUsers'),
+            'url' => env('APP_URL').'/storage/imageDiskUsers',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

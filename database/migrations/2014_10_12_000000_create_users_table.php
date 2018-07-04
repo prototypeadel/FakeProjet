@@ -24,13 +24,19 @@ class CreateUsersTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 45);
-            $table->string('email', 150);
-            $table->string('password', 255);
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+            $table->unsignedInteger('role_id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('post')->nullable();
+            $table->string('image')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+            $table->foreign('role_id')->references('id')->on('roles');
+            
+            // definir l'id references id table roles
             // $table->unsignedInteger('newsletters_id');
-
+           
             // $table->index(["newsletters_id"], 'fk_users_newsletters1_idx');
 
 

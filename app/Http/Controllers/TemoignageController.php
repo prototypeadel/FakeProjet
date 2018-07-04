@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Temoignage;
 use Illuminate\Http\Request;
+use Image;
+use Storage;
 
 class TemoignageController extends Controller
 {
@@ -14,7 +16,8 @@ class TemoignageController extends Controller
      */
     public function index()
     {
-        //
+        $temoignages = Temoignage::all();
+        return view ('admin.temoignages.index',compact('temoignages'));
     }
 
     /**
@@ -24,7 +27,9 @@ class TemoignageController extends Controller
      */
     public function create()
     {
-        //
+        $temoignages = Temoignage::all();
+        return view ('admin.temoignages.create',compact('temoignages'));  
+    
     }
 
     /**
@@ -35,7 +40,14 @@ class TemoignageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $temoignage = new Temoignage;
+        $temoignage->nom=$request->nom;
+        $temoignage->prenom = $request->prenom;
+        $temoignage->image=$request->image->store(" ",'DiskImageTemoignages');
+        $temoignage->contenu=$request->contenu;
+        $temoignage->save();
+        return redirect()->route('temoignages.index');
+
     }
 
     /**
@@ -46,7 +58,7 @@ class TemoignageController extends Controller
      */
     public function show(Temoignage $temoignage)
     {
-        //
+        return view("admin.temoignages.show",compact("temoignage"));
     }
 
     /**
@@ -57,7 +69,7 @@ class TemoignageController extends Controller
      */
     public function edit(Temoignage $temoignage)
     {
-        //
+      return view("admin.temoignages.edit", compact("temoignage"));
     }
 
     /**
@@ -69,7 +81,16 @@ class TemoignageController extends Controller
      */
     public function update(Request $request, Temoignage $temoignage)
     {
-        //
+        $temoignage->nom = $request->nom;
+        $temoignage->prenom = $request->prenom;
+        $temoignage->contenu = $request->contenu;
+        if ($request->image != null){
+            Storage::disk('DiskImageTemoignages')->delete($temoignage->image);
+            $temoignage->image= $request->image->store('','DiskImageTemoignages');
+        }
+        if($temoignage->save()){
+            return redirect()->route('temoignages.show',['id'=> $temoignage->id]);
+        }
     }
 
     /**
@@ -80,6 +101,10 @@ class TemoignageController extends Controller
      */
     public function destroy(Temoignage $temoignage)
     {
-        //
+        Storage::disk("DiskImageTemoignages")->delete($temoignage->image);
+        if($temoignage->delete()){
+
+            return redirect()->route ('temoignages.index');
+        }
     }
 }

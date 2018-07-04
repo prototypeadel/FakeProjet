@@ -3,32 +3,32 @@
 @section('title', 'voir')
 
 @section('content_header')
-    <h1> Mes Services</h1>
+    <h1> Mes users</h1>
 @stop
 
 @section('content')
  <div>
-    <p>#{{$temoignage->id}}</p>
+    <p>#{{$user->id}}</p>
     <div class="d-flex">
         <label >Nom </label>
-        <p > : {{$temoignage->nom}}</p> 
+        <p > : {{$user->name}}</p> 
     </div>
     <div class="d-flex">
-        <label >Prenom </label>
-        <p > : {{$temoignage->prenom}}</p> 
+        <label >email </label>
+        <p class="">  : {{ $user->email}}</p>
     </div>
     <div class="d-flex">
-        <label >Contenu  </label>
-        <p class="">  : {{ $temoignage->contenu}}</p>
+        <label > role </label>
+        <p class="">  : {{ $user->role->name}}</p>
     </div>
         <div class="row mt-3 mb-2">
             <div class="col-3">
-            <img src="{{Storage::disk('DiskImageTemoignages')->url($temoignage->image)}}"  class="img-fluid" alt="tt">
+            <img src="{{Storage::disk('DiskImageUsers')->url($user->image)}}"  class="img-fluid" alt="tt">
         </div>
     </div>
-        <a href="{{route('temoignages.show', ['element' => $temoignage->id])}}" class="btn btn-success"> voir</a>
-        <a href="{{route('temoignages.edit',['id'=>$temoignage->id])}}" class="btn btn-warning"> modifier</a>
-        <form class="d-inline-flex" action="{{route('temoignages.destroy', [ 'id'=> $temoignage->id])}}" method="post">
+        <a href="{{route('users.show', ['element' => $user->id])}}" class="btn btn-success"> voir</a>
+        <a href="{{route('users.edit',['id'=>$user->id])}}" class="btn btn-warning"> modifier</a>
+        <form class="d-inline-flex" action="{{route('users.destroy', [ 'id'=> $user->id])}}" method="post">
         @csrf
         @method('DELETE')
             <button type='submit' class="btn btn-danger"> supprimer </button>

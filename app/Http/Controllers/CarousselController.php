@@ -46,7 +46,7 @@ class CarousselController extends Controller
         $caroussel->photo = $request->photo->store('','DiskImage');
         $caroussel->save();
 
-        return redirect()->route('caroussels.index');
+        return redirect()->route('caroussels.show');
     }
 
     /**
@@ -69,7 +69,7 @@ class CarousselController extends Controller
      */
     public function edit(Caroussel $caroussel)
     {
-        
+        return view("admin.caroussels.show",compact("caroussel"));
     }
 
     /**

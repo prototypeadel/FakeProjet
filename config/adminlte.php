@@ -122,6 +122,13 @@ return [
             'label_color' => 'success',
         ],
         [
+            'text'        => 'users',
+            'url'         => 'admin/users',
+            'icon'        => 'file',
+            'label'       => 4,
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'temoignage',
             'url'         => 'admin/temoignages',
             'icon'        => 'file',
@@ -147,10 +154,9 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text'        => 'client',
-            'url'         => 'admin/clients',
+            'text'        => 'tags',
+            'url'         => 'admin/tags',
             'icon'        => 'file',
-            'label'       => 4,
             'label_color' => 'success',
         ],
         'ACCOUNT SETTINGS',

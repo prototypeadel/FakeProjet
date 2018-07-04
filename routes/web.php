@@ -29,6 +29,8 @@ Route::resource('/admin/services','ServiceController');
 Route::resource('/admin/categories','CategorieController');
 Route::resource('/admin/projets','ProjetController');
 Route::resource('/admin/temoignages','TemoignageController');
+Route::resource('/admin/tags','TagController');
+Route::resource('/admin/users','UserController');
 
 Auth::routes();
 
