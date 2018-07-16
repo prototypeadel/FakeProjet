@@ -31,6 +31,11 @@ Route::resource('/admin/projets','ProjetController');
 Route::resource('/admin/temoignages','TemoignageController');
 Route::resource('/admin/tags','TagController');
 Route::resource('/admin/users','UserController');
+Route::resource('/admin/newsletters','NewsletterController');
+Route::resource('/admin/clients','ClientController');
+Route::resource('/admin/commentaires','CommentaireController');
+Route::resource('/admin/roles','RoleController');
+
 
 Auth::routes();
 

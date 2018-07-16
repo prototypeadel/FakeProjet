@@ -14,7 +14,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        
+        $clients = Client::all();
+        return view ('admin.clients.index',compact('clients'));
     }
 
     /**
@@ -24,7 +26,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view ("admin.clients.create");
+
     }
 
     /**
@@ -35,7 +38,12 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = new Client;
+        $client->name = $request->name;
+        $client->company = $request->company;
+        $client->save();
+
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -46,7 +54,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
+        return view ('admin.clients.show',compact('client'));
     }
 
     /**
@@ -57,7 +65,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        //
+        return view ('admin.clients.edit',compact('client'));
     }
 
     /**
@@ -69,7 +77,11 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        //
+        $client->name = $request->name;
+        $client->company = $request->company;
+        if($client->save()){
+            return redirect()->route('clients.show',['id'=> $client->id]);
+        }
     }
 
     /**
@@ -80,6 +92,7 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return redirect()->route ('clients.index');
     }
 }

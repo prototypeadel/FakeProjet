@@ -14,7 +14,8 @@ class NewsletterController extends Controller
      */
     public function index()
     {
-        //
+        $newsletters = Newsletter::all();
+        return view ('admin.newsletters.index',compact('newsletters'));
     }
 
     /**
@@ -24,7 +25,7 @@ class NewsletterController extends Controller
      */
     public function create()
     {
-        //
+        return view ("admin.newsletters.create");
     }
 
     /**
@@ -35,7 +36,12 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newsletter = new Newsletter;
+        $newsletter->email = $request->email;
+        $newsletter->save();
+
+        return redirect()->route('newsletters.index');
+    
     }
 
     /**
@@ -46,7 +52,9 @@ class NewsletterController extends Controller
      */
     public function show(Newsletter $newsletter)
     {
-        //
+        
+        return view ('admin.newsletters.show',compact('newsletter'));
+        
     }
 
     /**
@@ -57,7 +65,8 @@ class NewsletterController extends Controller
      */
     public function edit(Newsletter $newsletter)
     {
-        //
+        return view ('admin.newsletters.edit',compact('newsletter'));
+
     }
 
     /**
@@ -69,7 +78,10 @@ class NewsletterController extends Controller
      */
     public function update(Request $request, Newsletter $newsletter)
     {
-        //
+        $newsletter->email = $request->email;
+        if($newsletter->save()){
+            return redirect()->route('newsletters.show',['id'=> $newsletter->id]);
+        }
     }
 
     /**
@@ -80,6 +92,7 @@ class NewsletterController extends Controller
      */
     public function destroy(Newsletter $newsletter)
     {
-        //
+        $newsletter->delete();
+        return redirect()->route ('newsletters.index');
     }
 }

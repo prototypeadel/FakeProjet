@@ -129,6 +129,12 @@ return [
             'label_color' => 'success',
         ],
         [
+            'text'        => 'commentaires',
+            'url'         => 'admin/commentaires',
+            'icon'        => 'file',
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'temoignage',
             'url'         => 'admin/temoignages',
             'icon'        => 'file',
@@ -147,6 +153,12 @@ return [
             'icon'        => 'file',
             'label_color' => 'success',
         ],
+        [
+            'text'        => 'newsletter',
+            'url'         => 'admin/newsletters',
+            'icon'        => 'file',
+            'label_color' => 'success',
+        ],
          [
             'text'        => 'projet',
             'url'         => 'admin/projets',
@@ -156,6 +168,12 @@ return [
         [
             'text'        => 'tags',
             'url'         => 'admin/tags',
+            'icon'        => 'file',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'clients',
+            'url'         => 'admin/clients',
             'icon'        => 'file',
             'label_color' => 'success',
         ],
